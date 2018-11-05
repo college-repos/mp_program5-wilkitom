@@ -54,7 +54,6 @@ public class DrawView extends View {
                 board[i][x] = Color.BLACK;
             }
         }
-
         if (mheight > 0) {
             setsizes();
         }
@@ -87,7 +86,7 @@ public class DrawView extends View {
         for (int yi = 0; yi < 3; yi++) {
             for (int xi = 0; xi < 3; xi++) {
 
-                canvas.drawRect(x, y, x + incr, y + incr, black);  //draw black box.
+                canvas.drawRect(x, y, x + incr, y + incr, black);
                 if (board[xi][yi] != Color.BLACK) {
                     other.setColor(board[xi][yi]);
                     canvas.drawRect(x + 1, y + 1, x + incr, y + incr, other);
@@ -117,10 +116,6 @@ public class DrawView extends View {
             return true;
         }
 
-        /*
-         * If outside the lines, then popup a dialog and ask about reseting the board.
-         * Interestingly, nothing is deprecated in the view
-         */
         Dialog dialog = null;
         AlertDialog.Builder builder;
         builder = new AlertDialog.Builder(myContext);
@@ -159,9 +154,6 @@ public class DrawView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
-        Log.i("MSW", "" + getMeasuredWidth());
-        Log.i("MSH", "" + getMeasuredHeight());
         mwidth = getMeasuredWidth();
         mheight = getMeasuredHeight();
         if (mheight > 0 && mwidth > mheight) {
@@ -170,8 +162,6 @@ public class DrawView extends View {
             mheight = mwidth;
         }
         setsizes();
-
         setMeasuredDimension(mwidth, mheight);
-
     }
 }
