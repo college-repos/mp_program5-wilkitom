@@ -9,10 +9,31 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:weightSum="100">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:layout_gravity="center"
+        android:layout_weight="15"
+        android:gravity="center"
+        android:text="TIC TAC TOE"
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
     <com.example.thomaswilkinson.program5.DrawView
         android:id="@+id/dv1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="75"/>
+
+    <Button
+        android:layout_width="302dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="10"
+        android:gravity="center"
+        android:text="Restart" />
 </LinearLayout>
