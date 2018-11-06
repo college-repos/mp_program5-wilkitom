@@ -30,6 +30,7 @@
         android:layout_weight="75"/>
 
     <Button
+        android:id="@+id/button"
         android:layout_width="302dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

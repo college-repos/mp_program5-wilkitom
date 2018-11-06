@@ -96,6 +96,27 @@ public class DrawView extends View {
         boardwidth = incr * 3;
     }
 
+    void resetButton(){
+        Dialog dialog = null;
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(myContext);
+        builder.setMessage("Reset game?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        counter=0;
+                        playerNum=1;
+                        clearboard();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        dialog = builder.create();
+        dialog.show();
+    }
+
     void clearboard() {
         for (int i = 0; i < 3; i++) {
             for (int x = 0; x < 3; x++) {
@@ -147,23 +168,6 @@ public class DrawView extends View {
             }
             return true;
         }
-
-        Dialog dialog = null;
-        AlertDialog.Builder builder;
-        builder = new AlertDialog.Builder(myContext);
-        builder.setMessage("Reset game?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        clearboard();
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
-        dialog = builder.create();
-        dialog.show();
         return false;
     }
 
@@ -275,8 +279,8 @@ public class DrawView extends View {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 where(x, y, playerNum);
+                invalidate();
                 boolean temp = checkWinner();
-                if(!temp) invalidate();
                 break;
         }
         return true;
